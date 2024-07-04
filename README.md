@@ -30,4 +30,4 @@ This page hosts:
 * * *
 
 ### Prerequisites
-* Basic understanding of the SIC and SIC/XE architecture.  The staple recommendation would be the [Leland Beck](https://www.amazon.in/System-Software-Introduction-Systems-Programming/dp/0201423006) book.
+* Basic understanding of the SIC and SIC/XE architecture.  The staple recommendation would be the [Leland Beck](https://www.amazon.in/System-Software-Introduction-Systems-Programming/dp/0201423006) book.  Thanks!
