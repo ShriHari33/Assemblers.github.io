@@ -59,8 +59,8 @@ _Below is an introduction that I feel would be helpful to understand the project
             - This mode is used to specify the address of the operand indirectly. 
         4. Indexed addressing mode
             - This mode is used to specify the address of the operand indirectly with an index register. 
-        <!-- 5. Base-relative addressing mode.  
-            - This mode is used to specify the address of the operand indirectly with a base register. -->
+        5. Base-relative addressing mode.  
+            - This mode is used to specify the address of the operand indirectly with a base register.
 
 * Understanding of the SIC/XE directives:
     - The SIC/XE directives are used to specify the attributes of the program. 
@@ -98,10 +98,10 @@ _Below is an introduction that I feel would be helpful to understand the project
     - As the Symbol Table is used to store the symbols (variable names) and their respective addresses in the input ASM file, and requires the _below operations_:
     - Insert a symbol and its address
     - Search for a symbol and its address
-    - Delete a symbol and its address,
+    - Delete a symbol and its address
 
-    
-    ##### We can use the following data structures:
+    <br>
+    We can use the following data structures:
 
     #### a) Hash Table
     A [Hash Table](https://en.wikipedia.org/wiki/Hash_table) is used to store the symbols and their respective addresses in an efficient manner.  It uses a hash function to map the symbols to their respective addresses.  The hash function tries to ensure the best that the symbols are stored in a unique location in the hash table.  The hash table ensures that the symbols can be searched, inserted, and deleted in constant time.
@@ -157,7 +157,7 @@ _Below is an introduction that I feel would be helpful to understand the project
         - In Pass 1 to validate the Opcode if it is even supported by the SIC/XE architecture hardware.
         - In Pass 2 to generate the Object Code by using the Opcode Table.
 
-    We can use the exact same data structures as mentioned above for the Symbol Table.  Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of $\mathcal{O}(1)$ for search operations.
+    We can use the exact same data structures as mentioned above for the Symbol Table.  Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
     
     ```cpp
     Time Complexity: O(1) (Omega) for search operations on average.
@@ -167,7 +167,9 @@ _Below is an introduction that I feel would be helpful to understand the project
 3) **For the Intermediate File**
         - The Intermediate File is used to store the intermediate results of the first pass.  The intermediate file is used to store the Control Section, the Symbol Table, and the Program.  The intermediate file is used to generate the Object Code in the second pass.
 
+    <br>
     We can use the following data structures:
+    
     #### a. Secondary Memory
     - The Intermediate File can be stored in the secondary memory like the hard disk.  The Intermediate File can be stored in a file in the secondary memory.  The Intermediate File can be read from the secondary memory in the second pass to generate the Object Code.
 
