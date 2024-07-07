@@ -137,36 +137,36 @@ Implementations of the above data structures can be found in the `data_structure
 > Due to the _presence of **Control Sections**_, we maintain a _separate Symbol Table for each Control Section_.  This ensures that the symbols are _unique_ within the Control Section and are _not duplicated_ across Control Section. This helps to cut-off the _ambiguity_ that can take place during **the linking process**.
 
 2) **For the Opcode Table and Register Table**
-    Both, the Opcode Table and the Register Table are **Static Data Structures** that are used to store the _opcodes_ and their _respective machine codes_, and the _registers_ and their _respective machine codes_ respectively, dictated by the **hardware of the SIC/XE architecture**.
-    The Opcode Table is used to validate the instructions and their respective opcodes, and the Register Table is used to validate the registers and their respective machine codes.
+Both, the Opcode Table and the Register Table are **Static Data Structures** that are used to store the _opcodes_ and their _respective machine codes_, and the _registers_ and their _respective machine codes_ respectively, dictated by the **hardware of the SIC/XE architecture**.
+The Opcode Table is used to validate the instructions and their respective opcodes, and the Register Table is used to validate the registers and their respective machine codes.
     - In Pass 1 to validate the instructions and their respective opcodes, reserving proper space for the instructions in the Intermediate File.
     - In Pass 1 to validate the Opcode if it is even supported by the SIC/XE architecture hardware.
     - In Pass 2 to generate the Object Code by using the Opcode Table.
-
-    We can use the exact same data structures as mentioned above for the Symbol Table.  Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
     
-    ```cpp
-    Time Complexity: O(1) (Omega) for search operations on average.
-    Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
-    ```
+We can use the exact same data structures as mentioned above for the Symbol Table.  Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
+```cpp
+Time Complexity: O(1) (Omega) for search operations on average.
+Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
+```
 
 3) **For the Intermediate File**
 The Intermediate File is used to store the intermediate results of the first pass.  The intermediate file is used to store the Control Section, the Symbol Table, and the Program.  The intermediate file is used to generate the Object Code in the second pass.
-    We can use the following data structures:
-    #### a) Secondary Memory
-    - The Intermediate File can be stored in the secondary memory like the hard disk.  The Intermediate File can be stored in a file in the secondary memory.  The Intermediate File can be read from the secondary memory in the second pass to generate the Object Code.
-    ```cpp
-    Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
-    Space Complexity: O(n) where n is the size of the Intermediate File.
-    ```
-    #### b. In-Memory Data Structures
-    - The Intermediate File can be stored in the memory.  The Intermediate File can be stored in the memory in the form of a data structure like a vector or a list.  The Intermediate File can be read from the memory in the second pass to generate the Object Code.
-    ```cpp
-    Time Complexity: 
-        - O(1) for insertion and search operations.
-        - O(n) for deletion operations.
-    Space Complexity: O(n) where n is the size of the Intermediate File.
-    ```
+We can use the following data structures:
+#### a. Secondary Memory
+- The Intermediate File can be stored in the secondary memory like the hard disk.  The Intermediate File can be stored in a file in the secondary memory.  The Intermediate File can be read from the secondary memory in the second pass to generate the Object Code.
+```cpp
+Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
+Space Complexity: O(n) where n is the size of the Intermediate File.
+```
+#### b. In-Memory Data Structures
+- The Intermediate File can be stored in the memory.  The Intermediate File can be stored in the memory in the form of a data structure like a vector or a list.  The Intermediate File can be read from the memory in the second pass to generate the Object Code.
+```cpp
+Time Complexity: 
+    - O(1) for insertion and search operations.
+    - O(n) for deletion operations.
+Space Complexity: O(n) where n is the size of the Intermediate File.
+```
+
 ### For the Second Pass:
 Let me set a bit of context that helps explain the _Header Record_, _Text Records_, _Modification Records_ and _End Record_ that are generated in the second pass.
 The SIC/XE architecture has a _fixed-length instruction format_ that is used to store the instructions.  The fixed-length instruction format is used to store the instructions in the memory.  This is analogous to the ELF format in the Linux Operating System, albeit this is a _way simpler version_ of the ELF format.
@@ -184,20 +184,20 @@ The fixed-length instruction format is used to store the instructions in the mem
 1. **For the Object Code**
 The Object Code is used to store the instructions of the program in the form of the fixed-length instruction format.  The Object Code is used by the Linker and Loader to process the program.  The Object Code is generated by using the Symbol Table that was generated in the first pass.
 We can use the following data structures:
-    #### a. Secondary Memory
-    The Object Code can be stored in the secondary memory like the hard disk.  The Object Code can be stored in a file in the secondary memory.  The Object Code can be read from the secondary memory by the Linker and Loader to process the program.
-    ```cpp
-    Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
-    Space Complexity: O(n) where n is the size of the Object Code.
-    ```
-    #### b. In-Memory Data Structures
-    - The Object Code can be stored in the memory.  The Object Code can be stored in the memory in the form of a data structure like a vector or a list.  The Object Code can be read from the memory by the Linker and Loader to process the program.
-    ```cpp
-    Time Complexity: 
-        - O(1) for insertion and search operations.
-        - O(n) for deletion operations.
-    Space Complexity: O(n) where n is the size of the Object Code.
-    ```
+#### a. Secondary Memory
+The Object Code can be stored in the secondary memory like the hard disk.  The Object Code can be stored in a file in the secondary memory.  The Object Code can be read from the secondary memory by the Linker and Loader to process the program.
+```cpp
+Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
+Space Complexity: O(n) where n is the size of the Object Code.
+```
+#### b. In-Memory Data Structures
+- The Object Code can be stored in the memory.  The Object Code can be stored in the memory in the form of a data structure like a vector or a list.  The Object Code can be read from the memory by the Linker and Loader to process the program.
+```cpp
+Time Complexity: 
+    - O(1) for insertion and search operations.
+    - O(n) for deletion operations.
+Space Complexity: O(n) where n is the size of the Object Code.
+```
 ---
 # Business Cases for Enhanced SIC/XE Assembler Design <a name="business-cases"></a>
 During the development of my Two-Pass SIC/XE assembler, I identified key areas where strategic data structure selection and optimization deliver significant business value. These improvements translate directly to tangible benefits for organizations employing assembly language programming:
