@@ -95,58 +95,44 @@ _Below is an introduction that I feel would be helpful to understand the project
 ###  For the First Pass:
 
 1. **For the Symbol Table**
-    As the Symbol Table is used to store the symbols (variable names) and their respective addresses in the input ASM file, and requires the _below operations_:
+As the Symbol Table is used to store the symbols (variable names) and their respective addresses in the input ASM file, and requires the _below operations_:
     - Insert a symbol and its address
     - Search for a symbol and its address
     - Delete a symbol and its address
-
     We can use the following data structures:
-
     #### a) Hash Table
     A [Hash Table](https://en.wikipedia.org/wiki/Hash_table) is used to store the symbols and their respective addresses in an efficient manner.  It uses a hash function to map the symbols to their respective addresses.  The hash function tries to ensure the best that the symbols are stored in a unique location in the hash table.  The hash table ensures that the symbols can be searched, inserted, and deleted in constant time.
-
     Provided a [good hash function](https://stackoverflow.com/questions/34595/what-is-a-good-hash-function), the **time complexity** of insertion, deletion, and search operations is **O(1)** on _average_.  It is _on average_ because there can be collisions in the hash table, which can increase the time complexity to **O(n)** in the worst case.  
     The **space complexity** of the hash table is **O(n)** where `n` is the number of symbols in the program.
-
     ```cpp
     Time Complexity: O(1) for insertion, deletion, and search operations on average.
     Space Complexity: O(n) where n is the number of symbols in the program.
     ```
-
     #### b) Self-Balancing Binary Search Trees
     If it is very crucial to us that we have a strict upper bound on the time complexity of the operations, we can opt the Symbol Table to be made of [Self-Balancing Binary Search Trees](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree) like the [AVL Tree](https://en.wikipedia.org/wiki/AVL_tree) or the [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree).  These trees ensure that the height of the tree is balanced, which ensures a constant time complexity for insertion, deletion, and search operations.
-
     ```cpp
     Time Complexity: O(log n) for insertion, deletion, and search operations.
     Space Complexity: O(n) where n is the number of symbols in the program.
     ```
-
     #### c) Trie
     A [Trie](https://en.wikipedia.org/wiki/Trie) is a tree-like data structure that is used to store a dynamic set of strings.  The Trie here can be used to store the symbols and their respective addresses in an efficient manner.  The Trie ensures that the symbols can be searched, inserted, and deleted in constant time with respect to the length of the symbol.
-
-
     ```cpp
     Time Complexity: O(L) for insertion, deletion, and search operations where `L` is the length of the symbol.
     Space Complexity: O(L*n) where `n` is the number of symbols in the program.
     ```
-
     #### d) Skip List
     A [Skip List](https://en.wikipedia.org/wiki/Skip_list) is a probabilistic data structure that enables fast search, insertion, and deletion operations. By maintaining multiple layers of forward pointers, Skip Lists allow operations to skip over large sections of the list, achieving average `O(log n)` time complexity for these operations. This makes Skip Lists an efficient and practical choice for symbol tables where logarithmic operation time is desirable.
-
     ```cpp
     Time Complexity: Average O(log n) for insertion, deletion, and search operations.
     Space Complexity: O(n), with higher constants due to additional pointers.
     ```
-
     Implementations of the above data structures can be found in the `data_structures` directory.
     1. [Hash Table](/data_structures/hash_table.hpp)
     2. [AVL Tree](/data_structures/avl_tree.hpp)
     3. [Red-Black Tree](/data_structures/red_black_tree.hpp)
     4. [Trie](/data_structures/trie.hpp)
     5. [Skip List](/data_structures/skip_list.hpp)
-
     <br>
-
     > Due to the _presence of **Control Sections**_, we maintain a _separate Symbol Table for each Control Section_.  This ensures that the symbols are _unique_ within the Control Section and are _not duplicated_ across Control Section. This helps to cut-off the _ambiguity_ that can take place during **the linking process**.
 
 2) **For the Opcode Table and Register Table**
@@ -164,29 +150,22 @@ _Below is an introduction that I feel would be helpful to understand the project
     ```
 
 3) **For the Intermediate File**
-        - The Intermediate File is used to store the intermediate results of the first pass.  The intermediate file is used to store the Control Section, the Symbol Table, and the Program.  The intermediate file is used to generate the Object Code in the second pass.
-
-    <br>
+The Intermediate File is used to store the intermediate results of the first pass.  The intermediate file is used to store the Control Section, the Symbol Table, and the Program.  The intermediate file is used to generate the Object Code in the second pass.
     We can use the following data structures:
-
-    #### a. Secondary Memory
+    #### a) Secondary Memory
     - The Intermediate File can be stored in the secondary memory like the hard disk.  The Intermediate File can be stored in a file in the secondary memory.  The Intermediate File can be read from the secondary memory in the second pass to generate the Object Code.
-
     ```cpp
     Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
     Space Complexity: O(n) where n is the size of the Intermediate File.
     ```
-
     #### b. In-Memory Data Structures
     - The Intermediate File can be stored in the memory.  The Intermediate File can be stored in the memory in the form of a data structure like a vector or a list.  The Intermediate File can be read from the memory in the second pass to generate the Object Code.
-
     ```cpp
     Time Complexity: 
         - O(1) for insertion and search operations.
         - O(n) for deletion operations.
     Space Complexity: O(n) where n is the size of the Intermediate File.
     ```
-
 ### For the Second Pass:
 Let me set a bit of context that helps explain the _Header Record_, _Text Records_, _Modification Records_ and _End Record_ that are generated in the second pass.
 The SIC/XE architecture has a _fixed-length instruction format_ that is used to store the instructions.  The fixed-length instruction format is used to store the instructions in the memory.  This is analogous to the ELF format in the Linux Operating System, albeit this is a _way simpler version_ of the ELF format.
@@ -202,28 +181,23 @@ The fixed-length instruction format is used to store the instructions in the mem
     - The End Record marks the end of the program, and specifies the address of the first executable instruction.
 
 1. **For the Object Code**
+The Object Code is used to store the instructions of the program in the form of the fixed-length instruction format.  The Object Code is used by the Linker and Loader to process the program.  The Object Code is generated by using the Symbol Table that was generated in the first pass.
 
-    - The Object Code is used to store the instructions of the program in the form of the fixed-length instruction format.  The Object Code is used by the Linker and Loader to process the program.  The Object Code is generated by using the Symbol Table that was generated in the first pass.
-
-    We can use the following data structures:
+We can use the following data structures:
     #### a. Secondary Memory
     - The Object Code can be stored in the secondary memory like the hard disk.  The Object Code can be stored in a file in the secondary memory.  The Object Code can be read from the secondary memory by the Linker and Loader to process the program.
-
     ```cpp
     Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
     Space Complexity: O(n) where n is the size of the Object Code.
     ```
-
     #### b. In-Memory Data Structures
     - The Object Code can be stored in the memory.  The Object Code can be stored in the memory in the form of a data structure like a vector or a list.  The Object Code can be read from the memory by the Linker and Loader to process the program.
-
     ```cpp
     Time Complexity: 
         - O(1) for insertion and search operations.
         - O(n) for deletion operations.
     Space Complexity: O(n) where n is the size of the Object Code.
     ```
-
 ---
 # Business Cases for Enhanced SIC/XE Assembler Design <a name="business-cases"></a>
 During the development of my Two-Pass SIC/XE assembler, I identified key areas where strategic data structure selection and optimization deliver significant business value. These improvements translate directly to tangible benefits for organizations employing assembly language programming:
