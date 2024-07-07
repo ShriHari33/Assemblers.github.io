@@ -98,22 +98,23 @@ _Below is an introduction that I feel would be helpful to understand the project
 As the Symbol Table is used to store the symbols (variable names) and their respective addresses in the input ASM file, and requires the _below operations_:
     - Insert a symbol and its address
     - Search for a symbol and its address
-    - Delete a symbol and its address
+    - Delete a symbol and its address  
     We can use the following data structures:
-    #### a) Hash Table
-    A [Hash Table](https://en.wikipedia.org/wiki/Hash_table) is used to store the symbols and their respective addresses in an efficient manner.  It uses a hash function to map the symbols to their respective addresses.  The hash function tries to ensure the best that the symbols are stored in a unique location in the hash table.  The hash table ensures that the symbols can be searched, inserted, and deleted in constant time.
-    Provided a [good hash function](https://stackoverflow.com/questions/34595/what-is-a-good-hash-function), the **time complexity** of insertion, deletion, and search operations is **O(1)** on _average_.  It is _on average_ because there can be collisions in the hash table, which can increase the time complexity to **O(n)** in the worst case.  
-    The **space complexity** of the hash table is **O(n)** where `n` is the number of symbols in the program.
-    ```cpp
-    Time Complexity: O(1) for insertion, deletion, and search operations on average.
-    Space Complexity: O(n) where n is the number of symbols in the program.
-    ```
-    #### b) Self-Balancing Binary Search Trees
-    If it is very crucial to us that we have a strict upper bound on the time complexity of the operations, we can opt the Symbol Table to be made of [Self-Balancing Binary Search Trees](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree) like the [AVL Tree](https://en.wikipedia.org/wiki/AVL_tree) or the [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree).  These trees ensure that the height of the tree is balanced, which ensures a constant time complexity for insertion, deletion, and search operations.
-    ```cpp
-    Time Complexity: O(log n) for insertion, deletion, and search operations.
-    Space Complexity: O(n) where n is the number of symbols in the program.
-    ```
+#### a) Hash Table
+A [Hash Table](https://en.wikipedia.org/wiki/Hash_table) is used to store the symbols and their respective addresses in an efficient manner.  It uses a hash function to map the symbols to their respective addresses.  The hash function tries to ensure the best that the symbols are stored in a unique location in the hash table.  The hash table ensures that the symbols can be searched, inserted, and deleted in constant time.
+Provided a [good hash function](https://stackoverflow.com/questions/34595/what-is-a-good-hash-function), the **time complexity** of insertion, deletion, and search operations is **O(1)** on _average_.  It is _on average_ because there can be collisions in the hash table, which can increase the time complexity to **O(n)** in the worst case.
+The **space complexity** of the hash table is **O(n)** where `n` is the number of symbols in the program.
+    
+```cpp
+Time Complexity: O(1) for insertion, deletion, and search operations on average.
+Space Complexity: O(n) where n is the number of symbols in the program.
+```
+#### b) Self-Balancing Binary Search Trees
+If it is very crucial to us that we have a strict upper bound on the time complexity of the operations, we can opt the Symbol Table to be made of [Self-Balancing Binary Search Trees](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree) like the [AVL Tree](https://en.wikipedia.org/wiki/AVL_tree) or the [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree).  These trees ensure that the height of the tree is balanced, which ensures a constant time complexity for insertion, deletion, and search operations.
+```cpp
+Time Complexity: O(log n) for insertion, deletion, and search operations.
+Space Complexity: O(n) where n is the number of symbols in the program.
+```
     #### c) Trie
     A [Trie](https://en.wikipedia.org/wiki/Trie) is a tree-like data structure that is used to store a dynamic set of strings.  The Trie here can be used to store the symbols and their respective addresses in an efficient manner.  The Trie ensures that the symbols can be searched, inserted, and deleted in constant time with respect to the length of the symbol.
     ```cpp
@@ -185,7 +186,7 @@ The Object Code is used to store the instructions of the program in the form of 
 
 We can use the following data structures:
     #### a. Secondary Memory
-    - The Object Code can be stored in the secondary memory like the hard disk.  The Object Code can be stored in a file in the secondary memory.  The Object Code can be read from the secondary memory by the Linker and Loader to process the program.
+    -The Object Code can be stored in the secondary memory like the hard disk.  The Object Code can be stored in a file in the secondary memory.  The Object Code can be read from the secondary memory by the Linker and Loader to process the program.
     ```cpp
     Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
     Space Complexity: O(n) where n is the size of the Object Code.
