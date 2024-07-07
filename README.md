@@ -192,13 +192,14 @@ Space Complexity: O(n) where n is the size of the Object Code.
 ```
 #### b. In-Memory Data Structures
 - The Object Code can be stored in the memory.  The Object Code can be stored in the memory in the form of a data structure like a vector or a list.  The Object Code can be read from the memory by the Linker and Loader to process the program.
+
 ```cpp
 Time Complexity: 
-O(1) for insertion and search operations.
-O(n) for deletion operations.
+    O(1) for insertion and search operations.
+    O(n) for deletion operations.
 
 Space Complexity: 
-O(n) where n is the size of the Object Code.
+    O(n) where n is the size of the Object Code.
 ```
 ---
 # Business Cases for Enhanced SIC/XE Assembler Design <a name="business-cases"></a>
@@ -249,8 +250,10 @@ This **minimizes the time spent on debugging**, reduces the likelihood of subtle
 ##### Problem: 
 Traditional assemblers often provide limited visibility into the assembly process, making it difficult to understand how source code translates to machine code. This lack of transparency makes debugging a frustrating and time-consuming process.
 ##### My Solution: 
-My assembler addresses this by generating two key files:
-<u>Intermediate Files</u>: These provide a step-by-step breakdown of the assembly process, making it easy to trace how the assembler interprets and translates your code.
+My assembler addresses this by generating two key files:  
+
+<u>Intermediate Files</u>: These provide a step-by-step breakdown of the assembly process, making it easy to trace how the assembler interprets and translates your code.  
+
 <u>Listing Files</u>: These combine your source code with generated machine code, symbol tables, and clear error messages mapped to specific lines. This integrated view simplifies debugging and enhances code understanding.
 
 ##### Business Impact: 
