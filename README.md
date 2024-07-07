@@ -194,9 +194,11 @@ Space Complexity: O(n) where n is the size of the Object Code.
 - The Object Code can be stored in the memory.  The Object Code can be stored in the memory in the form of a data structure like a vector or a list.  The Object Code can be read from the memory by the Linker and Loader to process the program.
 ```cpp
 Time Complexity: 
-    - O(1) for insertion and search operations.
-    - O(n) for deletion operations.
-Space Complexity: O(n) where n is the size of the Object Code.
+O(1) for insertion and search operations.
+O(n) for deletion operations.
+
+Space Complexity: 
+O(n) where n is the size of the Object Code.
 ```
 ---
 # Business Cases for Enhanced SIC/XE Assembler Design <a name="business-cases"></a>
@@ -227,7 +229,6 @@ I conduct thorough analysis of memory access patterns within the Symbol Table an
 ##### Business Impact: 
 Reduced memory footprint translates to the ability to handle larger projects efficiently, potentially lower hardware requirements, and a smaller overall operational cost.
 
-
 #### <u>Business Case 4</u>: Scalability for Future-Proofing Development Efforts
 ##### Problem:
 As software projects grow in complexity, assembler performance needs to scale accordingly to avoid becoming a bottleneck.
@@ -251,20 +252,22 @@ Traditional assemblers often provide limited visibility into the assembly proces
 My assembler addresses this by generating two key files:
 <u>Intermediate Files</u>: These provide a step-by-step breakdown of the assembly process, making it easy to trace how the assembler interprets and translates your code.
 <u>Listing Files</u>: These combine your source code with generated machine code, symbol tables, and clear error messages mapped to specific lines. This integrated view simplifies debugging and enhances code understanding.
-###### Business Impact: This transparency promotes faster debugging, reduces errors, and improves code quality through enhanced readability and understanding of the assembly process. Ultimately, this translates to quicker development cycles and more reliable software products.
+
+##### Business Impact: 
+This transparency promotes faster debugging, reduces errors, and improves code quality through enhanced readability and understanding of the assembly process. Ultimately, this translates to quicker development cycles and more reliable software products.
 
 
 #### <u>Business Case 7</u>: Accelerating Development with Makefile-Driven Builds
-###### Problem: 
+##### Problem: 
 Building projects in C++ often involves multiple steps: _assembling_ multiple source files, _linking_ object files, potentially running `pre` or `post-processing` scripts. Manually managing these steps is error-prone, time-consuming, and difficult to reproduce consistently, especially across different development environments.
 And given that I have divided the project into multiple files, it is essential to have a build system that can compile the project efficiently, abstracting the complexity of the build process.
-##### My Solution: 
+#### My Solution: 
 I've leveraged GNU Makefiles [^6], a powerful build automation tool, to manage the entire project build process. Here's how Makefiles bring value:
 - Automation: Makefiles define all build steps and their dependencies. A single command ("make") executes the entire build process correctly and efficiently.
 - Dependency Tracking: Makefiles automatically determine which files need to be recompiled or relinked based on their dependencies. This prevents unnecessary rebuilds, saving significant time during development.
 - Reproducibility: Makefiles ensure that the project can be built consistently across different machines and environments using the same defined steps, reducing the "it works on my machine" problem.
 - Flexibility: Makefiles allow for customization of build targets, allowing developers to easily perform specific actions like running tests or generating documentation.
-##### Business Impact:
+#### Business Impact:
 - _Increased Developer Productivity_: 
 Automation eliminates the tedious manual build steps (shooting yourself in the foot especically with C++), freeing developers to focus on writing and testing code.
 - _Faster Development Cycles_: 
