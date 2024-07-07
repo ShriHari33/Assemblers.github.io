@@ -100,10 +100,9 @@ _Below is an introduction that I feel would be helpful to understand the project
     - Search for a symbol and its address
     - Delete a symbol and its address
 
-    <br>
     We can use the following data structures:
 
-    ### a) Hash Table
+    #### a) Hash Table
     A [Hash Table](https://en.wikipedia.org/wiki/Hash_table) is used to store the symbols and their respective addresses in an efficient manner.  It uses a hash function to map the symbols to their respective addresses.  The hash function tries to ensure the best that the symbols are stored in a unique location in the hash table.  The hash table ensures that the symbols can be searched, inserted, and deleted in constant time.
 
     Provided a [good hash function](https://stackoverflow.com/questions/34595/what-is-a-good-hash-function), the **time complexity** of insertion, deletion, and search operations is **O(1)** on _average_.  It is _on average_ because there can be collisions in the hash table, which can increase the time complexity to **O(n)** in the worst case.  
