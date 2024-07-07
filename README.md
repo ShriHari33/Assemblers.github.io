@@ -114,14 +114,12 @@ If it is very crucial to us that we have a strict upper bound on the time comple
 Time Complexity: O(log n) for insertion, deletion, and search operations.
 Space Complexity: O(n) where n is the number of symbols in the program.
 ```
-
 #### c) Trie
 A [Trie](https://en.wikipedia.org/wiki/Trie) is a tree-like data structure that is used to store a dynamic set of strings.  The Trie here can be used to store the symbols and their respective addresses in an efficient manner.  The Trie ensures that the symbols can be searched, inserted, and deleted in constant time with respect to the length of the symbol.
 ```cpp
 Time Complexity: O(L) for insertion, deletion, and search operations where `L` is the length of the symbol.
-Space Complexity: O(L*n) where `n` is the number of symbols in the program.
+Space Complexity: O(L*n) where n is the number of symbols in the program.
 ```
-
 #### d) Skip List
 A [Skip List](https://en.wikipedia.org/wiki/Skip_list) is a probabilistic data structure that enables fast search, insertion, and deletion operations. By maintaining multiple layers of forward pointers, Skip Lists allow operations to skip over large sections of the list, achieving average `O(log n)` time complexity for these operations. This makes Skip Lists an efficient and practical choice for symbol tables where logarithmic operation time is desirable.
 ```cpp
