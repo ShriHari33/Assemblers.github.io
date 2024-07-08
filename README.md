@@ -345,7 +345,7 @@ The following steps will guide you on how to build and run the Two-Pass Assemble
     ```
     This will compile, link, and build the program.  The executable `assembler` will be generated in the `src` directory.
 
-    <br>
+    <br>    
 
 3. Run the program
     ```bash
@@ -367,6 +367,18 @@ The following steps will guide you on how to build and run the Two-Pass Assemble
     In case you want to clean the program, you can run the above command.  This will _remove_ the _object files_ and the _executable file_.
 
 ---
+# Future Scope <a name="future-scope"></a>
+1. **Parallel Processing**:  
+    - The Two-Pass Assembler can be enhanced to support _parallel processing_ to _speed up the assembly process_.  This can be achieved by _splitting the assembly process_ into multiple threads, each handling a separate Control Section.  I reckon this will significantly _reduce the overall assembly time_ and _improve the performance_ of the assembler.
+2. **Optimization Techniques**:  
+    - The Two-Pass Assembler can be further optimized by implementing _optimization techniques_ such as _dead code elimination_, _constant folding_, and _loop optimization_.  Taking the idea of LLVM's MLIR [^9] optimizations, we can _transform the intermediate representation_ of the program to _optimize the code_ and _reduce the execution time_.
+3. **Program Blocks**:
+    - In addition to the already present Control Sections, this Two-Pass Assembler can be extended to support _Program Blocks_, which allow the _separation of the program into multiple blocks_.  This will further enhance the _readability_ and _maintainability_ within a _single program_ and _facilitate the reuse of code_.
+4. **Macro Processing**:
+    - The Two-Pass Assembler can be enhanced to support _macro processing_, which allows the _definition and expansion of macros_ in the assembly code.  This will _reduce code duplication_ and _improve code readability_. This part is the most exciting part for the future scope of this project for me!
+    
+    Please submit PRs if you have any ideas or suggestions for the future scope of this project.  I would be more than happy to share, discuss, and implement them with the community!
+---
 # References <a name="references"></a>
 [^1]: Wikipedia, "Hash function," Available: https://en.wikipedia.org/wiki/Hash_function.
 [^2]: Wikipedia, "AVL tree," Available: https://en.wikipedia.org/wiki/AVL_tree.
@@ -376,3 +388,4 @@ The following steps will guide you on how to build and run the Two-Pass Assemble
 [^6]: GNU, "GNU Make," Available: https://www.gnu.org/software/make/.
 [^7]: L. L. Beck, "System Software: An Introduction to Systems Programming," 3rd ed., Pearson Education, 1996, Available: https://www.amazon.in/System-Software-Introduction-Systems-Programming/dp/0201423006.
 [^8]: D. Salomon, "Assemblers and Loaders," Available: https://www.davidsalomon.name/assem.advertis/asl.pdf.
+[^9]: LLVM, "MLIR: Multi-Level Intermediate Representation," Available: https://mlir.llvm.org/.
