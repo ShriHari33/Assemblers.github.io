@@ -127,13 +127,11 @@ Time Complexity: Average O(log n) for insertion, deletion, and search operations
 Space Complexity: O(n), with higher constants due to additional pointers.
 ```
 Implementations of the above data structures can be found in the `data_structures` directory.
-1. [Hash Table](/data_structures/hash_table.hpp)
-2. [AVL Tree](/data_structures/avl_tree.hpp)
-3. [Red-Black Tree](/data_structures/red_black_tree.hpp)
-4. [Trie](/data_structures/trie.hpp)
-5. [Skip List](/data_structures/skip_list.hpp)
-
-<br>
+    1. [Hash Table](/data_structures/hash_table.hpp)
+    2. [AVL Tree](/data_structures/avl_tree.hpp)
+    3. [Red-Black Tree](/data_structures/red_black_tree.hpp)
+    4. [Trie](/data_structures/trie.hpp)
+    5. [Skip List](/data_structures/skip_list.hpp)
 
 > Due to the _presence of **Control Sections**_, we maintain a _separate Symbol Table for each Control Section_.  This ensures that the symbols are _unique_ within the Control Section and are _not duplicated_ across Control Section. This helps to cut-off the _ambiguity_ that can take place during **the linking process**.
 
