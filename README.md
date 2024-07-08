@@ -31,7 +31,7 @@ This page hosts:
 * * *
 
 # Prerequisites <a name="prerequisites"></a>
-* Basic understanding of the SIC and SIC/XE architecture.  The staple recommendation to learn this would be the [Leland Beck](https://www.amazon.in/System-Software-Introduction-Systems-Programming/dp/0201423006) book.
+* Basic understanding of the SIC and SIC/XE architecture.  The staple recommendation to learn this would be the [Leland Beck](https://www.amazon.in/System-Software-Introduction-Systems-Programming/dp/0201423006) [^7] book.
 
 * Modern C++ knowledge.  The code is written with features from C++11 and above.  The code is written in a way that it is easy to understand and follow, and is well-commented and structured!.
 
@@ -39,55 +39,73 @@ This page hosts:
 _Below is an introduction that I feel would be helpful to understand the project on an abstract level.  Feel free to skip to the next section if you are already familiar with the concepts._
 
 # Introduction  <a name="introduction"></a>
-* Understanding of the two-pass assembler:
-    - An assembler is essentially an algorithm that is used to convert a respective assembly code into the respective machine code.  A two-pass assembler does this exact thing in _2 distinct steps_.  
-    The first pass is used to generate the symbol table and the second pass is used to generate the object code.
+* <u>Understanding of the two-pass assembler</u>:
+    - An assembler is essentially an algorithm that is used to _convert_ a respective **assembly program** into the respective **machine code**.  A two-pass assembler does this exact thing in _2 distinct steps_.  
+    The first pass is used to _generate the symbol table_ and the second pass is used to _generate the object code_ using the symbol table that was generated in the first pass.
 
-* Understanding of the SIC/XE architecture:
+* <u>Understanding of the SIC/XE architecture</u>:
     - The [SIC/XE](https://en.wikipedia.org/wiki/Simplified_Instructional_Computer#:~:text=There%20is%20also%20a%20more%20complicated%20machine%20built%20on%20top%20of%20SIC%20called%20the%20Simplified%20Instruction%20Computer%20with%20Extra%20Equipment%20(SIC/XE)) architecture is an *extension* of the [SIC](https://en.wikipedia.org/wiki/Simplified_Instructional_Computer) architecture.  The SIC/XE architecture has more features than the SIC architecture.  The SIC/XE architecture supports **more registers**, **more addressing modes**, and **more instructions** than the SIC architecture, making it _more powerful and versatile_ due to the hardware enhancements.
 
-* Understanding of the SIC/XE instructions:
-    - The SIC/XE instructions are divided into three categories: 1. Format 1 instructions, 2. Format 2 instructions, and 3. Format 3/4 instructions.  The Format 1 instructions are the simplest instructions.  The Format 2 instructions are the instructions that have two operands.  The Format 3/4 instructions are the instructions that have three operands.
+* <u>Understanding of the SIC/XE instructions</u>:
+    - The SIC/XE instructions are divided into three categories:  
+    1. Format 1 instructions 
+    2. Format 2 instructions
+    3. Format 3/4 instructions  
+    The Format 1 instructions are the _simplest instructions_ to test stuff like the I/O, Registers and others.  The Format 2 instructions are the instructions that have _two operands_, and mainly _revolve around the registers_.  The Format 3/4 instructions are the instructions that have _one operand, and mainly revolve around the memory_.
 
-* Understanding of the SIC/XE addressing modes:
+* <u>Understanding of the SIC/XE addressing modes</u>:
     - The SIC/XE addressing modes are divided into five categories: 
-        1. Immediate addressing mode
+        1. <u>Immediate addressing mode</u>
             - This mode is used to specify the value of the operand directly
-        2. Direct addressing mode
+        2. <u>Direct addressing mode</u>
             -  This mode is used to specify the address of the operand directly
-        3. Indirect addressing mode
-            - This mode is used to specify the address of the operand indirectly. 
-        4. Indexed addressing mode
+        3. <u>Indirect addressing mode</u>
+            - This mode is used to specify the address of the operand indirectly, where the address of the operand is obtained from operand's data.
+        4. <u>Indexed addressing mode</u>
             - This mode is used to specify the address of the operand indirectly with an index register. 
-        5. Base-relative addressing mode.  
+        5. <u>Base-relative addressing mode</u>.  
             - This mode is used to specify the address of the operand indirectly with a base register.
 
-* Understanding of the SIC/XE directives:
+* <u>Understanding of the SIC/XE directives</u>:
     - The SIC/XE directives are used to specify the attributes of the program. 
     These are divided into two categories: 
-        1. Assembler directives
+        1. <u>Assembler directives</u>
             - The Assembler directives are used to specify the attributes of the program that are used by the assembler. 
             Examples of such directives are:  `START, END, BYTE, WORD, RESB, and RESW`.
-        2. Machine directives.  
+        2. <u>Machine directives</u>  
             - The Machine directives are used to specify the attributes of the program that are used by the machine.
             Examples of such directives are: `LDA, STA, ADD, SUB, MUL, DIV, and COMP`.
 
-* Understanding of Control Sections:
-    - Control Sections allow for the separation of the program into multiple sections that embrace the readability and maintainability of the program. 
-    - The Control Section is a feature of the SIC/XE architecture that allows for the separation of the program into multiple sections.  The Linker, at link-time, is responsible to link the multiple sections of the program into a single executable program.
+* <u>Understanding of Control Sections</u>:
+    - Control Sections **allow for the separation of the program** into _multiple sections_ that embrace the **readability** and **maintainability** of the program. 
+    - The **Linker**, at link-time, is responsible to _link the multiple sections_ of the program into a single executable program.
 
+* <u>Understanding the Type of Symbols</u>:
+    - The symbols in the SIC/XE architecture are divided into two categories: 
+        1. **External Symbols**
+            - The External Symbols are the symbols that are _defined in one Control Section_ but are _referred to in another Control Section_.  The Linker is responsible to resolve the External Symbols at link-time.
+        2. **Absolute Symbols**
+            - The Absolute Symbols are the symbols that are _defined in one Control Section_ and are _referred to in the same Control Section_.  The Assembler is responsible to resolve the Absolute Symbols.
 
 # Objectives <a name="objectives"></a>
-* The primary objective of this project is to implement an efficient Two-Pass assembler for the SIC/XE architecture.
-* The secondary objective of this project is showcase an efficient linker that can link multiple sections of the program into a single executable program.
-* The tertiary objective of this project is to showcase an efficient loader that can load the executable program into the memory and execute it.
+* The primary objective of this project is to _implement an efficient Two-Pass assembler_ for the SIC/XE architecture, in the aim of which the following sub-objectives are set:
+    * To **optimize memory usage and execution time**, making the assembler suitable for use in environments with limited resources.
+    * To ensure **compatibility with the SIC/XE instruction set**, enabling the assembler to accurately translate mnemonic instructions into machine code.
+    * To support **all addressing modes** provided by the SIC/XE architecture, enhancing the flexibility and capability of the assembler.
+    * To implement **error detection and reporting mechanisms**, assisting developers in identifying and correcting syntax or semantic errors in their assembly code.
+    * To provide **clear and comprehensive documentation** on how to use the assembler, including examples of assembly programs and explanations of the assembly process.
+    * To use **modern C++ features** to write _clean, efficient, and maintainable code_, following _best practices_ and _design principles_, and to have detailed discussions on the choice of Data Structures.
+    * To create a **user-friendly interface** for the assembler on the _command-line interface_, to facilitate ease of use for both beginners and experienced users.
+    * To ensure **extensibility** of the assembler, allowing for future enhancements such as support for additional features such as _Program Blocks_, _Parallel Processing_, and _Optimization Techniques_.
+    * To structure the **project across multiple header and C++ source files**, promoting _modularity_ and _maintainability_, facilitating _parallel development_, _simplifying debugging_, and enhancing the _readability_ and organization of the codebase.
+    * To employ **GNU Make** as the **build system** to _manage the compilation process efficiently_, leveraging its capabilities to automate the build process and ensure a smooth development workflow across multiple platforms.
 
 
 # Design <a name="design"></a>
 * The design of the Two-Pass assembler is divided into two distinct steps: 
-    1. The 1st pass
+    1. <u>The 1st pass</u>
         - This is used to _generate the Symbol Table_ respective to **each Control Section**.  The symbol table is used to store the symbols and their respective addresses to help in the second pass.
-    2. The 2nd pass
+    2. <u>The 2nd pass</u>
         - This is used to _generate the Object Code_ that is **further utilised by the Linker and Loader** to process the program.  The object code is generated by using the symbol table that was generated in the first pass.
 
 ## Possible Data Structures that can be used for the Two-Pass Assembler:
@@ -102,14 +120,14 @@ As the Symbol Table is used to store the symbols (variable names) and their resp
     We can use the following data structures:
 #### a) Hash Table
 A [Hash Table](https://en.wikipedia.org/wiki/Hash_table) is used to store the symbols and their respective addresses in an efficient manner.  It uses a hash function to map the symbols to their respective addresses.  The hash function tries to ensure the best that the symbols are stored in a unique location in the hash table.  The hash table ensures that the symbols can be searched, inserted, and deleted in constant time.
-Provided a [good hash function](https://stackoverflow.com/questions/34595/what-is-a-good-hash-function), the **time complexity** of insertion, deletion, and search operations is **O(1)** on _average_.  It is _on average_ because there can be collisions in the hash table, which can increase the time complexity to **O(n)** in the worst case.
+Provided a _good hash function_ [^1], the **time complexity** of insertion, deletion, and search operations is **O(1)** on _average_.  It is _on average_ because there can be collisions in the hash table, which can increase the time complexity to **O(n)** in the worst case.
 The **space complexity** of the hash table is **O(n)** where `n` is the number of symbols in the program.
 ```cpp
 Time Complexity: O(1) for insertion, deletion, and search operations on average.
 Space Complexity: O(n) where n is the number of symbols in the program.
 ```
 #### b) Self-Balancing Binary Search Trees
-If it is very crucial to us that we have a strict upper bound on the time complexity of the operations, we can opt the Symbol Table to be made of [Self-Balancing Binary Search Trees](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree) like the [AVL Tree](https://en.wikipedia.org/wiki/AVL_tree) or the [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree).  These trees ensure that the height of the tree is balanced, which ensures a constant time complexity for insertion, deletion, and search operations.
+If it is very crucial to us that we have a strict upper bound on the time complexity of the operations [^8], we can opt the Symbol Table to be made of [Self-Balancing Binary Search Trees](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree) like the _AVL Tree_ [^2] or the _Red-Black Tree_ [^3].  These trees ensure that the **height of the tree is balanced**, which ensures a constant time complexity for insertion, deletion, and search operations.
 ```cpp
 Time Complexity: O(log n) for insertion, deletion, and search operations.
 Space Complexity: O(n) where n is the number of symbols in the program.
@@ -136,14 +154,14 @@ Implementations of the above data structures can be found in the `data_structure
 > Due to the _presence of **Control Sections**_, we maintain a _separate Symbol Table for each Control Section_.  This ensures that the symbols are _unique_ within the Control Section and are _not duplicated_ across Control Section. This helps to cut-off the _ambiguity_ that can take place during **the linking process**.
 
 2) **For the Opcode Table and Register Table**  
-Both, the Opcode Table and the Register Table are **Static Data Structures** that are used to store the _opcodes_ and their _respective machine codes_, and the _registers_ and their _respective machine codes_ respectively, dictated by the **hardware of the SIC/XE architecture**.
+Both, the Opcode Table and the Register Table are **Static Data Structures** that are used to store the _opcodes_ and their _respective machine codes_, and the _registers_ and their _respective machine codes_ respectively, dictated by the **hardware of the SIC/XE architecture**.  
 The Opcode Table is used to validate the instructions and their respective opcodes, and the Register Table is used to validate the registers and their respective machine codes.
-    - In Pass 1 to validate the instructions and their respective opcodes, reserving proper space for the instructions in the Intermediate File.
-    - In Pass 1 to validate the Opcode if it is even supported by the SIC/XE architecture hardware.
-    - In Pass 2 to generate the Object Code by using the Opcode Table.
+    - In Pass 1 to _validate the instructions_ and _their respective opcodes_, reserving proper space for the instructions in the Intermediate File.
+    - In Pass 1 to _validate the Opcode_ if it is even supported by the SIC/XE architecture hardware.
+    - In Pass 2 to _generate the Object Code_ by _using the Opcode Table_.
 
-We can use the exact same data structures as mentioned above for the Symbol Table.  
-Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
+We can use the exact same data structures as mentioned above for the Symbol Table. 
+Additionally, due to the virtue of them being a static data structures, we can opt for a **Hash Table**, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
 ```cpp
 Time Complexity: O(1) (Omega) for search operations on average.
     Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
@@ -306,6 +324,14 @@ By meticulously addressing these business cases and the design choices, my SIC/X
 
 ---
 # Usage  <a name="usage"></a>
+
+- The Design and Implementation of the Two-Pass Assembler for the SIC/XE architecture is done in _C++_, adhering to its Modern Standards.  The code is _structured across multiple header and C++ source files_, promoting **modularity** and **maintainability**. The code is _well-commented and structured_, making it easy to understand and follow. 
+- It is built using the **GNU Make build system**, which _automates the compilation process_ and ensures a smooth development workflow across multiple platforms.  The **[Makefile](/src/Makefile)** defines all build steps and their dependencies, allowing developers to compile the project efficiently with a single command.  
+Below is a diagram depicting the structure of the project:
+
+![Project Structure](/figs/Sys_Design.png)
+
+The following steps will guide you on how to build and run the Two-Pass Assembler on your local machine:
 1. Clone the repository
     ```bash
     git clone https://github.com/ShriHari33/sic_xe-assembler.git
@@ -353,15 +379,11 @@ By meticulously addressing these business cases and the design choices, my SIC/X
 
 ---
 # References <a name="references"></a>
-[^1]: [Hash Functions](https://en.wikipedia.org/wiki/Hash_function)
-
-[^2]: [AVL Trees](https://en.wikipedia.org/wiki/AVL_tree)
-
-[^3]: [Red-Black Trees](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
-
-[^4]: https://stackoverflow.com/questions/1145217/why-should-hash-functions-use-a-prime-number-modulus
-
-[^5]: https://cs61.seas.harvard.edu/site/2019/Storage/
-
-[^6]: https://www.gnu.org/software/make/
-
+[^1]: Wikipedia, "Hash function," Available: https://en.wikipedia.org/wiki/Hash_function.
+[^2]: Wikipedia, "AVL tree," Available: https://en.wikipedia.org/wiki/AVL_tree.
+[^3]: Wikipedia, "Red–black tree," Available: https://en.wikipedia.org/wiki/Red%E2%80%93black_tree.
+[^4]: Stack Overflow, "Why should hash functions use a prime number modulus?" Available: https://stackoverflow.com/questions/1145217/why-should-hash-functions-use-a-prime-number-modulus.
+[^5]: Harvard University, CS61, "Storage," 2019, Available: https://cs61.seas.harvard.edu/site/2019/Storage/.
+[^6]: GNU, "GNU Make," Available: https://www.gnu.org/software/make/.
+[^7]: L. L. Beck, "System Software: An Introduction to Systems Programming," 3rd ed., Pearson Education, 1996, Available: https://www.amazon.in/System-Software-Introduction-Systems-Programming/dp/0201423006.
+[^8]: D. Salomon, "Assemblers and Loaders," Available: https://www.davidsalomon.name/assem.advertis/asl.pdf.
