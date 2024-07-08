@@ -167,7 +167,6 @@ Time Complexity:
     - O(n) for deletion operations.
 Space Complexity: O(n) where n is the size of the Intermediate File.
 ```
-
 ### For the Second Pass:
 Let me set a bit of context that helps explain the _Header Record_, _Text Records_, _Modification Records_ and _End Record_ that are generated in the second pass.
 The SIC/XE architecture has a _fixed-length instruction format_ that is used to store the instructions.  The fixed-length instruction format is used to store the instructions in the memory.  This is analogous to the ELF format in the Linux Operating System, albeit this is a _way simpler version_ of the ELF format.
