@@ -377,7 +377,7 @@ The following steps will guide you on how to build and run the Two-Pass Assemble
 4. **Macro Processing**:
     - The Two-Pass Assembler can be enhanced to support _macro processing_, which allows the _definition and expansion of macros_ in the assembly code.  This will _reduce code duplication_ and _improve code readability_. This part is the most exciting part for the future scope of this project for me!
     
-    Please submit PRs if you have any ideas or suggestions for the future scope of this project.  I would be more than happy to share, discuss, and implement them with the community!
+> Please submit PRs if you have any ideas or suggestions for the future scope of this project.  I would be more than happy to share, discuss, and implement them with the community!
 ---
 # References <a name="references"></a>
 [^1]: Wikipedia, "Hash function," Available: https://en.wikipedia.org/wiki/Hash_function.
