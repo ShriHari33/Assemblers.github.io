@@ -113,10 +113,9 @@ private:
     }
 
 public:
-    // Constructor
     AVLTree() : root(nullptr) {}
 
-    // Function to insert a value into the tree
+    // Function to insert a value into the tree (Using R value reference)
     void insert(const T& value) {
         root = insertNode(root, value);
     }
