@@ -148,11 +148,11 @@ Additionally, due to the virtue of them being a static data structures, we can o
 Time Complexity: O(1) (Omega) for search operations on average.
     Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
 ```
-3) **For the Intermediate File**
+3) **For the Intermediate File**  
 The Intermediate File is used to store the intermediate results of the first pass.  The intermediate file is used to store the Control Section, the Symbol Table, and the Program.  The intermediate file is used to generate the Object Code in the second pass.
 We can use the following data structures:
 #### a. Secondary Memory
-- The Intermediate File can be stored in the secondary memory like the hard disk.  The Intermediate File can be stored in a file in the secondary memory.  The Intermediate File can be read from the secondary memory in the second pass to generate the Object Code.
+- The Intermediate File can be stored in the _secondary memory_ like the hard disk.  It can further be read from the secondary memory in the second pass to generate the Object Code.
 ```cpp
 Time Complexity: Dependent on the size of the data, Hardware of the Secondary Storage, underlying Operating System and system performance, not strictly O(1).
 Space Complexity: O(n) where n is the size of the Intermediate File.
@@ -161,14 +161,15 @@ Space Complexity: O(n) where n is the size of the Intermediate File.
 - The Intermediate File can be stored in the memory.  The Intermediate File can be stored in the memory in the form of a data structure like a vector or a list.  The Intermediate File can be read from the memory in the second pass to generate the Object Code.
 ```cpp
 Time Complexity: 
-    - O(1) for insertion and search operations.
-    - O(n) for deletion operations.
-Space Complexity: O(n) where n is the size of the Intermediate File.
-```
+    O(1) for insertion and search operations.
+    O(n) for deletion operations.
 
+Space Complexity: 
+    O(n) where n is the size of the Object Code.
+```
 ### For the Second Pass:
 Let me set a bit of context that helps explain the _Header Record_, _Text Records_, _Modification Records_ and _End Record_ that are generated in the second pass.
-The SIC/XE architecture has a _fixed-length instruction format_ that is used to store the instructions.  The fixed-length instruction format is used to store the instructions in the memory.  This is analogous to the ELF format in the Linux Operating System, albeit this is a _way simpler version_ of the ELF format.
+The SIC/XE architecture has a _fixed-length instruction format_ that is used to store the instructions.  The fixed-length instruction format is used to store the instructions in the memory.  This is _analogous_ to the **ELF format** in the **Linux Operating System**, albeit this is a _way simpler version_ of the ELF format.
 <br>
 The fixed-length instruction format is used to store the instructions in the memory in the form of:
 - <u>Header Record (H)</u>
@@ -273,7 +274,7 @@ I've leveraged GNU Makefiles [^6], a powerful build automation tool, to manage t
 - _Increased Developer Productivity_: 
 Automation eliminates the tedious manual build steps (shooting yourself in the foot especically with C++), freeing developers to focus on writing and testing code.
 - _Faster Development Cycles_: 
-Automated dependency tracking and parallel builds (possible with make -j) significantly reduce build times, especially for large projects.
+Automated dependency tracking and parallel builds (possible with `make -j`) significantly reduce build times, especially for large projects.
 - _Reduced Errors_: Makefiles enforce a consistent and reliable build process, minimizing the potential for human error and ensuring consistent output.
 - _Improved Code Maintainability_: 
 Makefiles act as clear and concise documentation of the build process, making it easier for others to understand and maintain the project over time.
@@ -283,24 +284,24 @@ By meticulously addressing these business cases and the design choices, my SIC/X
 ---
 # A sample execution of the Two-Pass Assembler with figures <a name="sample-execution"></a>
 
-1. Input File
-    ![Input File](/figs/sample_input.png)
+1. <u>Input File</u>  
+    ![Input File](/figs/sample_input.png)  
     The above input consists of 3 Control Sections: `Main`, `RDREC`, and `WRREC`.  Each Control Section has a set of instructions and directives.
 
     When this is fed as input to the Two-Pass Assembler, the following happens:
     1. The First Pass generates the Symbol Table, and an Intermediate file for Layout of the program in the memory along with errors (if any), for each Control Section.
     2. The Second Pass generates the Object Code for each Control Section and a Listing File depicting detailed information about the program, and errors if any.
 
-2. Intermediate File
-    ![Intermediate File](/figs/sample_intermediate.png)
+2. <u>Intermediate File</u>  
+    ![Intermediate File](/figs/sample_intermediate.png)  
     The above intermediate file consists of the Control Section, the Symbol Table, and the Program.  The intermediate file is used to generate the Object Code in the second pass.
 
-3. Object Code
-    ![Object Code](/figs/sample_object.png)
+3. <u>Object Code</u>  
+    ![Object Code](/figs/sample_object.png)  
     The above object code consists of the Header Record, Text Records, Modification Records, and End Record.  The object code is used by the Linker and Loader to process the program.
 
-4. Listing File
-    ![Listing File](/figs/sample_listing.png)
+4. <u>Listing File</u>  
+    ![Listing File](/figs/sample_listing.png)  
     The above listing file consists of the detailed information about the program.  The listing file is used to debug the program and to understand the program.
 
 ---
