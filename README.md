@@ -94,7 +94,7 @@ _Below is an introduction that I feel would be helpful to understand the project
 
 ###  For the First Pass:
 
-1. **For the Symbol Table**
+1. **For the Symbol Table**  
 As the Symbol Table is used to store the symbols (variable names) and their respective addresses in the input ASM file, and requires the _below operations_:
     - Insert a symbol and its address
     - Search for a symbol and its address
@@ -126,14 +126,15 @@ A [Skip List](https://en.wikipedia.org/wiki/Skip_list) is a probabilistic data s
 Time Complexity: Average O(log n) for insertion, deletion, and search operations.
 Space Complexity: O(n), with higher constants due to additional pointers.
 ```
-
 Implementations of the above data structures can be found in the `data_structures` directory.
 1. [Hash Table](/data_structures/hash_table.hpp)
 2. [AVL Tree](/data_structures/avl_tree.hpp)
 3. [Red-Black Tree](/data_structures/red_black_tree.hpp)
 4. [Trie](/data_structures/trie.hpp)
 5. [Skip List](/data_structures/skip_list.hpp)
+
 <br>
+
 > Due to the _presence of **Control Sections**_, we maintain a _separate Symbol Table for each Control Section_.  This ensures that the symbols are _unique_ within the Control Section and are _not duplicated_ across Control Section. This helps to cut-off the _ambiguity_ that can take place during **the linking process**.
 
 2) **For the Opcode Table and Register Table**
@@ -146,7 +147,7 @@ The Opcode Table is used to validate the instructions and their respective opcod
 We can use the exact same data structures as mentioned above for the Symbol Table.  Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
 ```cpp
 Time Complexity: O(1) (Omega) for search operations on average.
-Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
+    Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
 ```
 
 3) **For the Intermediate File**
@@ -266,10 +267,10 @@ Building projects in C++ often involves multiple steps: _assembling_ multiple so
 And given that I have divided the project into multiple files, it is essential to have a build system that can compile the project efficiently, abstracting the complexity of the build process.
 #### My Solution: 
 I've leveraged GNU Makefiles [^6], a powerful build automation tool, to manage the entire project build process. Here's how Makefiles bring value:
-- Automation: Makefiles define all build steps and their dependencies. A single command ("make") executes the entire build process correctly and efficiently.
-- Dependency Tracking: Makefiles automatically determine which files need to be recompiled or relinked based on their dependencies. This prevents unnecessary rebuilds, saving significant time during development.
-- Reproducibility: Makefiles ensure that the project can be built consistently across different machines and environments using the same defined steps, reducing the "it works on my machine" problem.
-- Flexibility: Makefiles allow for customization of build targets, allowing developers to easily perform specific actions like running tests or generating documentation.
+- _Automation_: Makefiles define all build steps and their dependencies. A single command ("make") executes the entire build process correctly and efficiently.
+- _Dependency Tracking_: Makefiles automatically determine which files need to be recompiled or relinked based on their dependencies. This prevents unnecessary rebuilds, saving significant time during development.
+- _Reproducibility_: Makefiles ensure that the project can be built consistently across different machines and environments using the same defined steps, reducing the "it works on my machine" problem.
+- _Flexibility_: Makefiles allow for customization of build targets, allowing developers to easily perform specific actions like running tests or generating documentation.
 #### Business Impact:
 - _Increased Developer Productivity_: 
 Automation eliminates the tedious manual build steps (shooting yourself in the foot especically with C++), freeing developers to focus on writing and testing code.
