@@ -15,8 +15,7 @@
 
 [comment]: # (> Robust implementation of a Two-Pass Assembler for the SIC/XE architecture)
 
-#### Note:
-This page hosts:
+#### This page hosts:
 
 1. [Pre-requisites](#prerequisites)
 2. [Introduction](#introduction)
@@ -26,7 +25,8 @@ This page hosts:
 6. [Sample Execution](#sample-execution)
 7. [Usage](#usage)
 8. [Future Scope](#future-scope)
-9. [References](#references)
+9. [About Me](#about-me)
+10. [References](#references)
 
 * * *
 
@@ -379,8 +379,18 @@ The following steps will guide you on how to build and run the Two-Pass Assemble
     > Please submit PRs if you have any ideas or suggestions for the future scope of this project.  I would be more than happy to share, discuss, and implement them with the community!
 
 ---
-# References <a name="references"></a>
+# About Me <a name="about-me"></a>
+As a pre-final year Computer Science and Engineering student at KLE Technological University, I, Shrihari, have developed a strong foundation in low-level systems, with a particular focus on **Linux device drivers**, **Interposing Libraries** and **ELF file systems**. My proficiency in C and Modern C++ has been instrumental in my work with these systems.
 
+My professional experience includes _contributing to projects_ at **NVIDIA**, which has solidified my aspiration to _pursue a career in **Systems Engineering**_. This exposure has not only enhanced my technical skills but also made me _realise my passion_ for working with low-level software.
+
+Beyond my technical pursuits, I maintain a keen _interest in Mathematics_, finding intellectual stimulation in its principles and applications. Additionally, I derive great enjoyment from **operating manual transmission vehicles**, _appreciating the mechanical intricacies and control_ they offer. I also love to _tinker_ with **hardware components!**
+
+These diverse interests and experiences have shaped my _academic and professional trajectory_, positioning me well for future endeavors in the field of **Systems Engineering**.  I am currently preparing for **GATE CSE 2025** for my Masters to explore various other Systems Engineering domains such as **Computer Graphics**, **GPU Programming**, **HPC** and **Advanced Computer Architecture**. 
+
+---
+
+# References <a name="references"></a>
 [^1]: Wikipedia, "Hash function," Available: https://en.wikipedia.org/wiki/Hash_function.
 [^2]: Wikipedia, "AVL tree," Available: https://en.wikipedia.org/wiki/AVL_tree.
 [^3]: Wikipedia, "Red–black tree," Available: https://en.wikipedia.org/wiki/Red%E2%80%93black_tree.
