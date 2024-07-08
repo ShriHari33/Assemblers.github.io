@@ -325,6 +325,7 @@ By meticulously addressing these business cases and the design choices, my SIC/X
 ---
 # Usage  <a name="usage"></a>
 
+- The source code for the Two-Pass Assembler is available in the **[src](/src)** directory.
 - The Design and Implementation of the Two-Pass Assembler for the SIC/XE architecture is done in _C++_, adhering to its Modern Standards.  The code is _structured across multiple header and C++ source files_, promoting **modularity** and **maintainability**. The code is _well-commented and structured_, making it easy to understand and follow. 
 - It is built using the **GNU Make build system**, which _automates the compilation process_ and ensures a smooth development workflow across multiple platforms.  The **[Makefile](/src/Makefile)** defines all build steps and their dependencies, allowing developers to compile the project efficiently with a single command.  
 Below is a diagram depicting the structure of the project:
@@ -364,18 +365,6 @@ The following steps will guide you on how to build and run the Two-Pass Assemble
     ```
 
     In case you want to clean the program, you can run the above command.  This will _remove_ the _object files_ and the _executable file_.
-
-
-
-
-
-
-
-
-
-
-
-
 
 ---
 # References <a name="references"></a>
