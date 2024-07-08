@@ -149,7 +149,6 @@ We can use the exact same data structures as mentioned above for the Symbol Tabl
 Time Complexity: O(1) (Omega) for search operations on average.
     Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
 ```
-
 3) **For the Intermediate File**
 The Intermediate File is used to store the intermediate results of the first pass.  The intermediate file is used to store the Control Section, the Symbol Table, and the Program.  The intermediate file is used to generate the Object Code in the second pass.
 We can use the following data structures:
@@ -167,6 +166,7 @@ Time Complexity:
     - O(n) for deletion operations.
 Space Complexity: O(n) where n is the size of the Intermediate File.
 ```
+
 ### For the Second Pass:
 Let me set a bit of context that helps explain the _Header Record_, _Text Records_, _Modification Records_ and _End Record_ that are generated in the second pass.
 The SIC/XE architecture has a _fixed-length instruction format_ that is used to store the instructions.  The fixed-length instruction format is used to store the instructions in the memory.  This is analogous to the ELF format in the Linux Operating System, albeit this is a _way simpler version_ of the ELF format.
