@@ -376,10 +376,11 @@ The following steps will guide you on how to build and run the Two-Pass Assemble
     - In addition to the already present Control Sections, this Two-Pass Assembler can be extended to support _Program Blocks_, which allow the _separation of the program into multiple blocks_.  This will further enhance the _readability_ and _maintainability_ within a _single program_ and _facilitate the reuse of code_.
 4. **Macro Processing**:
     - The Two-Pass Assembler can be enhanced to support _macro processing_, which allows the _definition and expansion of macros_ in the assembly code.  This will _reduce code duplication_ and _improve code readability_. This part is the most exciting part for the future scope of this project for me!
-    
-> Please submit PRs if you have any ideas or suggestions for the future scope of this project.  I would be more than happy to share, discuss, and implement them with the community!
+    > Please submit PRs if you have any ideas or suggestions for the future scope of this project.  I would be more than happy to share, discuss, and implement them with the community!
+
 ---
 # References <a name="references"></a>
+
 [^1]: Wikipedia, "Hash function," Available: https://en.wikipedia.org/wiki/Hash_function.
 [^2]: Wikipedia, "AVL tree," Available: https://en.wikipedia.org/wiki/AVL_tree.
 [^3]: Wikipedia, "Red–black tree," Available: https://en.wikipedia.org/wiki/Red%E2%80%93black_tree.
