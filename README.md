@@ -135,14 +135,15 @@ Implementations of the above data structures can be found in the `data_structure
 
 > Due to the _presence of **Control Sections**_, we maintain a _separate Symbol Table for each Control Section_.  This ensures that the symbols are _unique_ within the Control Section and are _not duplicated_ across Control Section. This helps to cut-off the _ambiguity_ that can take place during **the linking process**.
 
-2) **For the Opcode Table and Register Table**
+2) **For the Opcode Table and Register Table**  
 Both, the Opcode Table and the Register Table are **Static Data Structures** that are used to store the _opcodes_ and their _respective machine codes_, and the _registers_ and their _respective machine codes_ respectively, dictated by the **hardware of the SIC/XE architecture**.
 The Opcode Table is used to validate the instructions and their respective opcodes, and the Register Table is used to validate the registers and their respective machine codes.
     - In Pass 1 to validate the instructions and their respective opcodes, reserving proper space for the instructions in the Intermediate File.
     - In Pass 1 to validate the Opcode if it is even supported by the SIC/XE architecture hardware.
     - In Pass 2 to generate the Object Code by using the Opcode Table.
-    
-We can use the exact same data structures as mentioned above for the Symbol Table.  Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
+
+We can use the exact same data structures as mentioned above for the Symbol Table.  
+Additionally, due to the virtue of them being a static data structures, we can opt for a Hash Table, as we _only perform search operations_ on these tables during the first and second pass.  We can meticulously design the hash function to ensure that the opcodes & register names are stored in a unique location respectively, in the hash table, yielding the worst case time complexity of **O(1)** for search operations.
 ```cpp
 Time Complexity: O(1) (Omega) for search operations on average.
     Space Complexity: O(n) where n is the number of opcodes in the SIC architecture.
